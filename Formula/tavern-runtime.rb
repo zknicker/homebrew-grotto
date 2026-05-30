@@ -1,9 +1,9 @@
 class TavernRuntime < Formula
   desc "Always-on Tavern Runtime server"
   homepage "https://github.com/zknicker/tavern"
-  url "https://punchpress-electron-app-209596837609-us-east-1-an.s3.us-east-1.amazonaws.com/tavern/mac/tavern-runtime-1.1.7-aarch64-apple-darwin.tar.gz"
-  sha256 "09e7753a9239b70ecd860f28cfdeef55b073b18ebf14a04d5bce23af0be72be2"
-  version "1.1.7"
+  url "https://punchpress-electron-app-209596837609-us-east-1-an.s3.us-east-1.amazonaws.com/tavern/mac/tavern-runtime-1.1.8-aarch64-apple-darwin.tar.gz"
+  sha256 "cac0ef07803a6ecb859e07b30953cf7823ef19ef17a241cbfe280bf9433ebe2b"
+  version "1.1.8"
   license :cannot_represent
 
   depends_on "node"
@@ -22,7 +22,8 @@ class TavernRuntime < Formula
     run [opt_bin/"tavern", "serve"]
     environment_variables TAVERN_RUNTIME_HOST: "127.0.0.1",
       TAVERN_RUNTIME_PORT: "18790",
-      TAVERN_RUNTIME_ROOT: var/"tavern/runtime"
+      TAVERN_RUNTIME_ROOT: var/"tavern/runtime",
+      PATH: "#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     keep_alive true
     log_path var/"log/tavern/runtime.log"
     error_log_path var/"log/tavern/runtime.log"
