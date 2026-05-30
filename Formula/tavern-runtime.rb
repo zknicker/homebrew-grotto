@@ -1,14 +1,15 @@
 class TavernRuntime < Formula
   desc "Always-on Tavern Runtime server"
   homepage "https://github.com/zknicker/tavern"
-  url "https://punchpress-electron-app-209596837609-us-east-1-an.s3.us-east-1.amazonaws.com/tavern/mac/tavern-runtime-1.1.3-aarch64-apple-darwin.tar.gz"
-  sha256 "d620c664f55d9fb2fe70991f26d7d144ed1b48627b636ba900ea358dbfd44b01"
-  version "1.1.3"
+  url "https://punchpress-electron-app-209596837609-us-east-1-an.s3.us-east-1.amazonaws.com/tavern/mac/tavern-runtime-1.1.4-aarch64-apple-darwin.tar.gz"
+  sha256 "eb33b16f5bbc4f0b0650897005b5209dbd05d82708471a2911830c63d049a031"
+  version "1.1.4"
   license :cannot_represent
 
   depends_on "node"
 
   def install
+    bin.install "bin/tavern"
     bin.install "bin/tavern-runtime"
     (share/"tavern").install "share/tavern/openclaw-plugins"
     (share/"tavern/node_modules/@tavern").install "share/tavern/node_modules/@tavern/sdk"
@@ -18,9 +19,9 @@ class TavernRuntime < Formula
   end
 
   service do
-    run [opt_bin/"tavern-runtime", "serve"]
+    run [opt_bin/"tavern", "serve"]
     environment_variables TAVERN_RUNTIME_HOST: "127.0.0.1",
-      TAVERN_RUNTIME_PORT: "4310",
+      TAVERN_RUNTIME_PORT: "18790",
       TAVERN_RUNTIME_ROOT: var/"tavern/runtime"
     keep_alive true
     log_path var/"log/tavern/runtime.log"
@@ -28,6 +29,7 @@ class TavernRuntime < Formula
   end
 
   test do
+    assert_match version.to_s, shell_output("#{bin}/tavern --version")
     assert_match version.to_s, shell_output("#{bin}/tavern-runtime --version")
   end
 end
