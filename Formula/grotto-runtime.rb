@@ -1,9 +1,9 @@
 class GrottoRuntime < Formula
   desc "Always-on Grotto Runtime server"
   homepage "https://github.com/zknicker/tavern"
-  url "https://punchpress-electron-app-209596837609-us-east-1-an.s3.us-east-1.amazonaws.com/tavern/mac/grotto-runtime-1.6.0-aarch64-apple-darwin.tar.gz"
-  sha256 "8ce2b0fb8da0d05f0c9329af29ab848eb9cc91842c51a4c0d70c27d5183caa3f"
-  version "1.6.0"
+  url "https://punchpress-electron-app-209596837609-us-east-1-an.s3.us-east-1.amazonaws.com/tavern/mac/grotto-runtime-1.6.2-aarch64-apple-darwin.tar.gz"
+  sha256 "dceffd87ac81fbd74639c539f1425d767d390ada1e551bfd78522157f2f8e663"
+  version "1.6.2"
   license :cannot_represent
 
   depends_on "node"
